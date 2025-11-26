@@ -59,9 +59,9 @@ if not baris.empty:
     info = baris.iloc[0]
     st.subheader(f"📊 Data Iklim - {tanggal.strftime('%d %B %Y')}")
     st.write(f"- Suhu rata-rata: **{info['Tavg']}°C**")
-    st.write(f"- Kelembaban: **{info['kelembaban']}%**")
+    st.write(f"- kelembaban: **{info['kelembaban']}%**")
     st.write(f"- Curah hujan: **{info['curah_hujan']} mm**")
-    st.write(f"- Matahari: **{info['matahari']} jam**")
+    st.write(f"- matahari: **{info['matahari']} jam**")
     st.write(f"- Kecepatan angin: **{info['kecepatan_angin']} km/jam**")
 
     st.markdown("---")
@@ -96,4 +96,5 @@ with st.expander("📁 Lihat dan Unduh Data Lengkap"):
     with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
         data.to_excel(writer, sheet_name='Hasil DSS', index=False)
         writer.close()
+
     st.download_button(label="Unduh Excel", data=buffer.getvalue(), file_name="hasil_dss_iklim.xlsx", mime="application/vnd.ms-excel")
